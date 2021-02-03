@@ -6,6 +6,7 @@
   --mainGrey: #ececec;
   --primaryColor: #f09d51;
   --mainSpacing: 0.1rem;
+  --mainTransition: all 0.3s linear;
 }
 
 * {
