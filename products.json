@@ -21,7 +21,7 @@
       "fields": {
         "title": "Ireland 1970s",
         "price": 12.99,
-        "image": { "fields": { "file": { "url": "./images/ireland1970s" } } }
+        "image": { "fields": { "file": { "url": "./images/ireland1970s.jpg" } } }
       }
     },
     {
@@ -29,7 +29,7 @@
       "fields": {
         "title": "Portugal 1972",
         "price": 22.99,
-        "image": { "fields": { "file": { "url": "./images/portugal1972" } } }
+        "image": { "fields": { "file": { "url": "./images/portugal1972.jpg" } } }
       }
     },
     {
