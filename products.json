@@ -1,0 +1,100 @@
+{
+  "items": [
+    {
+      "sys": { "id": "1" },
+      "fields": {
+        "title": "FK Partizan 1960s",
+        "price": 10.99,
+        "image": { "fields": { "file": { "url": "./images/partizan1960s.jpg" } } }
+      }
+    },
+    {
+      "sys": { "id": "2" },
+      "fields": {
+        "title": "FK Partizan Mitropa Cup Winner 1978",
+        "price": 12.99,
+        "image": { "fields": { "file": { "url": "./images/partizan1978.jpg" } } }
+      }
+    },
+    {
+      "sys": { "id": "3" },
+      "fields": {
+        "title": "Ireland 1970s",
+        "price": 12.99,
+        "image": { "fields": { "file": { "url": "./images/ireland1970s" } } }
+      }
+    },
+    {
+      "sys": { "id": "4" },
+      "fields": {
+        "title": "Portugal 1972",
+        "price": 22.99,
+        "image": { "fields": { "file": { "url": "./images/portugal1972" } } }
+      }
+    },
+    {
+      "sys": { "id": "5" },
+      "fields": {
+        "title": "Ghana 1980s",
+        "price": 45.99,
+        "image": { "fields": { "file": { "url": "./images/ghana1980s.jpg" } } }
+      }
+    },
+    {
+      "sys": { "id": "6"},
+      "fields": {
+        "title": "Yugoslavia World Cup 1990 ",
+        "price": 32.99,
+        "image": { "fields": { "file": { "url": "./images/yugoslavia1990.jpg" } } }
+      }
+    },
+    {
+      "sys": { "id": "7" },
+      "fields": {
+        "title": "Peru 1978",
+        "price": 39.99,
+        "image": { "fields": { "file": { "url": "./images/peru1978.jpg" } } }
+      }
+    },
+    {
+      "sys": { "id": "8" },
+      "fields": {
+        "title": "Argentina 1978",
+        "price": 33.99,
+        "image": { "fields": { "file": { "url": "./images/argentina1978.jpeg" } } }
+      }
+    },
+    {
+      "sys": { "id": "9" },
+      "fields": {
+        "title": "Brazil World Cup 1958",
+        "price": 33.99,
+        "image": { "fields": { "file": { "url": "./images/brazil1958.jpg" } } }
+      }
+    },
+    {
+      "sys": { "id": "10" },
+      "fields": {
+        "title": "Cuba 1980s",
+        "price": 22.99,
+        "image": { "fields": { "file": { "url": "./images/cuba1980s.jpg" } } }
+      }
+    },
+    {
+      "sys": { "id": "11" },
+      "fields": {
+        "title": "Dukla Praha 1960s Away Shirt",
+        "price": 41.99,
+        "image": { "fields": { "file": { "url": "./images/dukla1960saway.jpg" } } }
+      }
+    },
+    {
+      "sys": { "id": "12" },
+      "fields": {
+        "title": "URSS 1970s",
+        "price": 33.99,
+        "image": { "fields": { "file": { "url": "./images/urss1970.jpg" } } }
+      }
+    }
+  ]
+}
