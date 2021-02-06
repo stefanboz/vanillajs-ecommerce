@@ -91,8 +91,6 @@ class UI {
                 this.setCartValues(cart);
 
                 this.addCartItem(cartItem);
-
-                this.toggleCart();
             });
         });
     }
@@ -126,12 +124,16 @@ class UI {
           </div>
 
           <div>
-              <i class="fas fa-chevron-up" data-id=${item.id}></i>
+              <i class="fas fa-chevron-up item-increase-amount" data-id=${item.id}></i>
               <p class="item-amount">${item.amount}</p>
-              <i class="fas fa-chevron-down" data-id=${item.id}></i>
+              <i class="fas fa-chevron-down item-decrease-amount" data-id=${item.id}></i>
           </div>
         `;
         cartContent.appendChild(cartItemWrapper);
+
+        if (clearCartBtn.disabled) {
+            clearCartBtn.disabled = false;
+        }
     }
 
     toggleCart() {
@@ -147,6 +149,10 @@ class UI {
 
         cartBtn.addEventListener('click', this.toggleCart);
         closeCartBtn.addEventListener('click', this.toggleCart);
+
+        if (!cart.length) {
+            clearCartBtn.disabled = true;
+        }
     }
 
     populateCart(cart) {
@@ -155,6 +161,52 @@ class UI {
 
     cartLogic() {
         clearCartBtn.addEventListener('click', () => this.clearCart());
+
+        cartContent.addEventListener('click', event => {
+            if (event.target.classList.contains('remove-item')) {
+                let itemToRemove = event.target;
+                let id = itemToRemove.dataset.id;
+
+                // remove the item from the DOM
+                cartContent.removeChild(
+                    itemToRemove.parentElement.parentElement
+                );
+                // remove the item from the cart
+                this.removeItem(id);
+            } else if (
+                event.target.classList.contains('item-increase-amount')
+            ) {
+                let itemToAddAmount = event.target;
+                let id = itemToAddAmount.dataset.id;
+                let tmpItem = cart.find(item => item.id === id);
+
+                tmpItem.amount = tmpItem.amount + 1;
+                Storage.saveCart(cart);
+                this.setCartValues(cart);
+                itemToAddAmount.nextElementSibling.innerText = tmpItem.amount;
+            } else if (
+                event.target.classList.contains('item-decrease-amount')
+            ) {
+                let itemToDecreaseAmount = event.target;
+                let id = itemToDecreaseAmount.dataset.id;
+                let tmpItem = cart.find(item => item.id === id);
+
+                tmpItem.amount = tmpItem.amount - 1;
+
+                // remove the item from the DOM and the cart if the amount goes down to zero
+                if (tmpItem.amount > 0) {
+                    Storage.saveCart(cart);
+                    this.setCartValues(cart);
+                    itemToDecreaseAmount.previousElementSibling.innerText =
+                        tmpItem.amount;
+                } else {
+                    cartContent.removeChild(
+                        itemToDecreaseAmount.parentElement.parentElement
+                    );
+                    this.removeItem(id);
+                }
+            }
+        });
     }
 
     clearCart() {
@@ -166,6 +218,8 @@ class UI {
         }
 
         this.toggleCart();
+
+        clearCartBtn.disabled = true;
     }
 
     removeItem(id) {

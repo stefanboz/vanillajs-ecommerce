@@ -220,6 +220,11 @@ body {
     transform: translateX(100%);
 }
 
+.clear-cart:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
 .js-showCart {
     transform: translateX(0);
 }
