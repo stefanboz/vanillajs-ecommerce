@@ -112,6 +112,11 @@ body {
     color: var(--primaryColor);
 }
 
+.shop-now-btn {
+    display: inline-block;
+    text-decoration: none;
+}
+
 /* --------------- End of Hero ---------------- */
 
 /* --------------- Products ---------------- */
