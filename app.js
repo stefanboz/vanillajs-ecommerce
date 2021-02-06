@@ -49,7 +49,7 @@ class UI {
                   class="product-img"
                 />
                 <button class="add-to-cart-btn" data-id=${product.id}>
-                  <i class="fas fa-shopping-cart">Add to cart</i>
+                  <i class="fas fa-shopping-cart"></i> Add to cart
                 </button>
               </div>
               <h3>${product.title}</h3>
@@ -92,7 +92,7 @@ class UI {
 
                 this.addCartItem(cartItem);
 
-                this.showCart();
+                this.toggleCart();
             });
         });
     }
@@ -134,9 +134,52 @@ class UI {
         cartContent.appendChild(cartItemWrapper);
     }
 
-    showCart() {
-        cartOverlay.classList.add('js-transparentBckg');
-        cartDOM.classList.add('js-showCart');
+    toggleCart() {
+        cartOverlay.classList.toggle('js-transparentBckg');
+        cartDOM.classList.toggle('js-showCart');
+    }
+
+    setupApp() {
+        cart = Storage.getCart();
+
+        this.setCartValues(cart);
+        this.populateCart(cart);
+
+        cartBtn.addEventListener('click', this.toggleCart);
+        closeCartBtn.addEventListener('click', this.toggleCart);
+    }
+
+    populateCart(cart) {
+        cart.forEach(item => this.addCartItem(item));
+    }
+
+    cartLogic() {
+        clearCartBtn.addEventListener('click', () => this.clearCart());
+    }
+
+    clearCart() {
+        let cartItems = cart.map(item => item.id);
+        cartItems.forEach(id => this.removeItem(id));
+
+        while (cartContent.children.length > 0) {
+            cartContent.removeChild(cartContent.children[0]);
+        }
+
+        this.toggleCart();
+    }
+
+    removeItem(id) {
+        cart = cart.filter(item => item.id !== id);
+        this.setCartValues(cart);
+        Storage.saveCart(cart);
+
+        let singleAddToCartButton = this.getSingleAddToCartButton(id);
+        singleAddToCartButton.disabled = false;
+        singleAddToCartButton.innerHTML = `<i class="fas fa-shopping-cart"></i> Add to cart`;
+    }
+
+    getSingleAddToCartButton(id) {
+        return addToCartBtnsDOM.find(button => button.dataset.id === id);
     }
 }
 
@@ -155,11 +198,19 @@ class Storage {
     static saveCart(cart) {
         localStorage.setItem('cart', JSON.stringify(cart));
     }
+
+    static getCart() {
+        return localStorage.getItem('cart')
+            ? JSON.parse(localStorage.getItem('cart'))
+            : [];
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     const ui = new UI();
     const products = new Products();
+
+    ui.setupApp();
 
     products
         .getProducts()
@@ -170,5 +221,6 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(() => {
             ui.getAddToCartButtons();
+            ui.cartLogic();
         });
 });
