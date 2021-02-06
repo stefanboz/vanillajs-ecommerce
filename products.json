@@ -43,7 +43,7 @@
     {
       "sys": { "id": "6"},
       "fields": {
-        "title": "Yugoslavia World Cup 1990 ",
+        "title": "Yugoslavia World Cup 1990",
         "price": 32.99,
         "image": { "fields": { "file": { "url": "./images/yugoslavia1990.jpg" } } }
       }
@@ -93,7 +93,7 @@
       "fields": {
         "title": "URSS 1970s",
         "price": 33.99,
-        "image": { "fields": { "file": { "url": "./images/urss1970.jpg" } } }
+        "image": { "fields": { "file": { "url": "./images/urss1970s.jpg" } } }
       }
     }
   ]
