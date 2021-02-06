@@ -303,3 +303,11 @@ body {
 }
 
 /* --------------- End of Cart ---------------- */
+
+/*---------- Footer -------------------- */
+footer {
+    background-color: var(--mainBlack);
+    color: var(--mainWhite);
+    text-align: center;
+    padding: 10px 0;
+}
